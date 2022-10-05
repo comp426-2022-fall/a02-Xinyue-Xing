@@ -52,25 +52,28 @@ const data = await response.json();
 if (args.d + 1) {
     const days = args.d 
 
-    if (days == 0) {
-        console.log("today.")
-    } else if (days > 1) {
-        console.log("in " + days + " days.")
-    } else {
-        console.log("tomorrow.")
-    }
-
     if (data.daily.precipitation_hours[days] != 0.0) {
-        console.log("You might need your galoshes");
+        if (days == 0) {
+            console.log("You might need your galoshes today.");
+        } else if (days > 1) {
+            console.log("You might need your galoshes" + "in " + days + " days.");
+        } else {
+            console.log("You might need your galoshes tomorrow.");
+        }
     } else{
-        console.log("You will not need your galoshes");
+        if (days == 0) {
+            console.log("You will not need your galoshes today.");
+        } else if (days > 1) {
+            console.log("You will not need your galoshes" + "in " + days + " days.");
+        } else {
+            console.log("You will not need your galoshes tomorrow.");
+        }
     }
 } else {
-    console.log("tomorrow.")
     if (data.daily.precipitation_hours[1] != 0.0) {
-        console.log("You might need your galoshes");
+        console.log("You might need your galoshes tomorrow.");
     } else{
-        console.log("You will not need your galoshes");
+        console.log("You will not need your galoshes tomorrow.");
     }
 }
 
