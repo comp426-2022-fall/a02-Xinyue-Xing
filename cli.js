@@ -22,21 +22,8 @@ if(args.h){
     }
 }
 
-var latitude = '35.92';
-if (args.n) {
-    latitude = parseFloat(args.n).toFixed(2);
-}
-if (args.s) {
-    latitude = - parseFloat(args.s).toFixed(2);
-}
-
-var longitude = '79.05';
-if (args.e) {
-    longitude = parseFloat(args.e).toFixed(2);
-}
-if (args.w) {
-    longitude = - parseFloat(args.w).toFixed(2);
-}
+var latitude = args.n || args.s * -1;;
+var longitude = args.e || args.w * -1;
 
 var timezone = moment.tz.guess();
 if (args.z) {
@@ -73,3 +60,5 @@ if (days == 0) {
   } else {
     console.log("tomorrow.")
   }
+
+  
